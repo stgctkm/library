@@ -37,7 +37,8 @@ public class 予約の管理 {
     @Timeout(10)
     public void 図書の予約_取置_貸出_返却() {
         // メニュー画面
-        driver.get("http://localhost:%d".formatted(port));
+//        driver.get("http://localhost:%d".formatted(port));
+        driver.get("http://localhost:8080");
         {
             // 予約画面 (図書の検索)
             WebElement 本の予約リンク = driver.findElement(By.id("link-reservation-for-member"));
