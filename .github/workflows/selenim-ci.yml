@@ -27,9 +27,13 @@ jobs:
 
       - uses: browser-actions/setup-chrome@latest
       - run: chrome --version
-      - run: ./gradlew bootRun
+#      - run: ./gradlew bootRun
+#        env:
+#          SPRING_DATASOURCE_URL: jdbc:postgresql:postgres
+#          SPRING_DATASOURCE_USERNAME: postgres
+#          SPRING_DATASOURCE_PASSWORD: secret
+      - run: ./gradlew test --tests "library.e2e.*" --no-daemon
         env:
           SPRING_DATASOURCE_URL: jdbc:postgresql:postgres
           SPRING_DATASOURCE_USERNAME: postgres
           SPRING_DATASOURCE_PASSWORD: secret
-      - run: ./gradlew test --tests "library.e2e.*" --no-daemon
