@@ -25,8 +25,8 @@ public class 貸出と返却 {
     @Timeout(10)
     public void 図書の貸出と返却2() {
         //  図書の貸出
-//        open("http://localhost:%d/loan/register".formatted(port));
-        open("http://localhost:8080/loan/register");
+        open("http://localhost:%d/loan/register".formatted(port));
+//        open("http://localhost:8080/loan/register");
         {
             SelenideElement 会員番号入力欄 = $(By.id("memberNumber.value"));
             SelenideElement 所蔵品番号入力欄 = $(By.id("itemNumber.value"));
