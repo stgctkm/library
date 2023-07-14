@@ -1,84 +1,68 @@
 package library.e2e;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.*;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
-import java.time.Duration;
-import java.util.List;
-
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class 貸出と返却 {
-    WebDriver driver;
 
     @LocalServerPort
     int port;
 
-    @BeforeEach
-    public void setup() {
-        driver = new ChromeDriver();
-    }
-
-    @AfterEach
-    public void teardown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
-
-
     @Test
     @Timeout(10)
-    public void 図書の貸出と返却() {
-        // 図書の貸出
-        driver.get("http://localhost:%d/loan/register".formatted(port));
-        WebElement 会員番号入力欄 = driver.findElement(By.id("memberNumber.value"));
-        WebElement 所蔵品番号入力欄 = driver.findElement(By.id("itemNumber.value"));
-        WebElement 登録ボタン = driver.findElement(By.id("button-register-loan"));
-
-        会員番号入力欄.sendKeys("1");
-        所蔵品番号入力欄.sendKeys("2-A");
-        登録ボタン.click();
+    public void 図書の貸出と返却2() {
+        //  図書の貸出
+//        open("http://localhost:%d/loan/register".formatted(port));
+        open("http://localhost:8080/loan/register");
+        {
+            SelenideElement 会員番号入力欄 = $(By.id("memberNumber.value"));
+            SelenideElement 所蔵品番号入力欄 = $(By.id("itemNumber.value"));
+            SelenideElement 登録ボタン = $(By.id("button-register-loan"));
 
 
-        // 貸出図書の一覧
-        WebElement 貸出リスト表 = new WebDriverWait(driver, Duration.ofSeconds(3))
-                .until(driver -> driver.findElement(By.id("loan-list")));
+            会員番号入力欄.setValue("1");
+            所蔵品番号入力欄.setValue("2-A");
+            登録ボタン.click();
+        }
 
-        assertThat(driver.getTitle(), is("貸出完了"));
-        WebElement 貸出リスト = 貸出リスト表.findElement(By.tagName("tbody"));
-        List<WebElement> 貸出図書の一覧 = 貸出リスト.findElements(By.tagName("tr"));
+        {
+            //  貸出図書の一覧
+            SelenideElement 貸出リスト表 = $(By.id("loan-list")).should(Condition.appear);
 
-        assertThat(貸出図書の一覧.size(), is(1));
+            assertThat(Selenide.title(), is("貸出完了"));
+            var 貸出リスト = 貸出リスト表.find(By.tagName("tbody"));
+            var 貸出図書の一覧 = 貸出リスト.findAll(By.tagName("tr"));
+            assertThat(貸出図書の一覧.size(), is(1));
 
-        // 貸出図書の返却画面へ遷移
-        WebElement 返却リンク = driver.findElement(By.id("link-return"));
-        返却リンク.click();
+            // 貸出図書の返却画面へ遷移
+            var 返却リンク = $(By.id("link-return"));
+            返却リンク.click();
+        }
 
-        new WebDriverWait(driver, Duration.ofSeconds(3))
-                .until(driver -> driver.findElement(By.id("title-return")));
+        {
+            // 貸出図書の返却画面
+            $(By.id("title-return")).should(Condition.appear);
 
-        // 貸出図書の返却
-        WebElement 返却所蔵品番号入力欄 = driver.findElement(By.id("itemNumber.value"));
-        WebElement 返却登録ボタン = driver.findElement(By.id("button-return"));
+            // 貸出図書の返却
+            var 返却所蔵品番号入力欄 = $(By.id("itemNumber.value"));
+            var 返却登録ボタン = $(By.id("button-return"));
 
-        返却所蔵品番号入力欄.sendKeys("2-A");
-        返却登録ボタン.click();
+            返却所蔵品番号入力欄.setValue("2-A");
+            返却登録ボタン.click();
+        }
+
     }
 }
