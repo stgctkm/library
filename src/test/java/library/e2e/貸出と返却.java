@@ -23,7 +23,7 @@ public class 貸出と返却 {
 
     @Test
     @Timeout(10)
-    public void 図書の貸出と返却2() {
+    public void 図書の貸出と返却() {
         //  図書の貸出
         open("http://localhost:%d/loan/register".formatted(port));
         {
