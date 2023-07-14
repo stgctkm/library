@@ -30,10 +30,9 @@ jobs:
           SPRING_DATASOURCE_URL: jdbc:postgresql:postgres
           SPRING_DATASOURCE_USERNAME: postgres
           SPRING_DATASOURCE_PASSWORD: secret
+
       - uses: browser-actions/setup-chrome@latest
       - run: chrome --version
-
-      - name: selenium
       - run: ./gradlew bootRun
         env:
           SPRING_DATASOURCE_URL: jdbc:postgresql:postgres
