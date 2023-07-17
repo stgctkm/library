@@ -21,6 +21,7 @@ import static library.domain.model.member.MemberStatus.有効;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Disabled("テストデータの準備、片付けをテストケースで行うよう要変更")
 @ScenarioTest
 class LoanScenarioTest {
     @Autowired
