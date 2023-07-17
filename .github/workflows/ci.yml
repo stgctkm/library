@@ -30,6 +30,13 @@ jobs:
           SPRING_DATASOURCE_URL: jdbc:postgresql:postgres
           SPRING_DATASOURCE_USERNAME: postgres
           SPRING_DATASOURCE_PASSWORD: secret
+      - uses: browser-actions/setup-chrome@latest
+      - run: chrome --version
+      - run: ./gradlew test --tests "library.e2e.*" --no-daemon
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql:postgres
+          SPRING_DATASOURCE_USERNAME: postgres
+          SPRING_DATASOURCE_PASSWORD: secret
   update-gh-pages:
     runs-on: ubuntu-latest
     steps:

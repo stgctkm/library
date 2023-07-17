@@ -6,12 +6,14 @@ import library.domain.model.material.entry.Entry;
 import library.domain.model.material.entry.EntryNumber;
 import library.domain.model.member.MemberNumber;
 import library.domain.model.reservation.wait.ReservationWithWaitingOrder;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static library.domain.model.material.entry.EntryType.図書;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Disabled("テストデータの準備、片付けをテストケースで行うよう要変更")
 @ScenarioTest
 class ReservationCancellationScenarioTest {
     @Autowired

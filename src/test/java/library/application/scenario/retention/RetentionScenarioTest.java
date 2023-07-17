@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Disabled("テストデータの準備、片付けをテストケースで行うよう要変更")
 @ScenarioTest
 class RetentionScenarioTest {
     @Autowired
