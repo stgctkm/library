@@ -32,6 +32,7 @@ jobs:
           SPRING_DATASOURCE_URL: jdbc:postgresql:postgres
           SPRING_DATASOURCE_USERNAME: postgres
           SPRING_DATASOURCE_PASSWORD: secret
+          GRADLE_OPTS: -Dorg.gradle.jvmargs="-Duser.language=ja"
   update-gh-pages:
     runs-on: ubuntu-latest
     steps:
