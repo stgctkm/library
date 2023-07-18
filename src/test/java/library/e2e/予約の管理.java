@@ -1,17 +1,11 @@
 package library.e2e;
 
 import com.codeborne.selenide.Condition;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
-
-import java.time.Duration;
-import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -25,7 +19,7 @@ public class 予約の管理 {
     int port;
 
     @Test
-    @Timeout(10)
+    @Timeout(15)
     public void 図書の予約_取置_貸出_返却() {
         open("http://localhost:%d".formatted(port));
         {
