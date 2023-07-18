@@ -1,5 +1,6 @@
 package library;
 
+import org.junit.jupiter.api.Disabled;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -12,5 +13,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @SpringBootTest
 @ActiveProfiles("scenario-test")
+@Disabled("テストデータの準備、片付けをテストケースで行うよう要変更")
 public @interface ScenarioTest {
 }

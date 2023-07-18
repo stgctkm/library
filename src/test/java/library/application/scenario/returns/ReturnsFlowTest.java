@@ -11,7 +11,6 @@ import library.domain.model.member.MemberNumber;
 import library.domain.model.returned.ReturnDate;
 import library.domain.model.returned.Returned;
 import library.infrastructure.datasource.member.MemberMapper;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,7 +18,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Disabled("テストデータの準備、片付けをテストケースで行うよう要変更")
 @ScenarioTest
 class ReturnsFlowTest {
 

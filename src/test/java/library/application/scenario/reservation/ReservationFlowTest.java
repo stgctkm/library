@@ -25,7 +25,6 @@ import java.util.List;
 import static library.domain.model.reservation.availability.ReservationAvailability.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Disabled("テストデータの準備、片付けをテストケースで行うよう要変更")
 @ScenarioTest
 public class ReservationFlowTest {
     @Autowired

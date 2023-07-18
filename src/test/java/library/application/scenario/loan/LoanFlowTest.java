@@ -25,7 +25,6 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 /**
  * TODO: 本来シナリオクラスのテストに書きたくない業務フローのテストをここに退避しているので、置き場所・書き方を決める
  */
-@Disabled("テストデータの準備、片付けをテストケースで行うよう要変更")
 @ScenarioTest
 class LoanFlowTest {
     @Autowired

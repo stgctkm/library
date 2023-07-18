@@ -11,14 +11,12 @@ import library.domain.model.reservation.wait.ReservationWithWaitingOrder;
 import library.domain.model.retention.Retained;
 import library.domain.model.retention.Retention;
 import library.infrastructure.datasource.retention.RetentionDatasource;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static library.domain.model.material.entry.EntryType.図書;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Disabled("テストデータの準備、片付けをテストケースで行うよう要変更")
 @ScenarioTest
 class RetentionExpireScenarioTest {
     @Autowired
