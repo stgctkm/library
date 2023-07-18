@@ -49,6 +49,8 @@ jobs:
           sudo apt install graphviz
       - name: Generate JIG
         run: ./gradlew clean build jig
+        env:
+          GRADLE_OPTS: -Dorg.gradle.jvmargs="-Duser.language=ja"
       - name: Deploy GithubPages
         run: |
           git config --global user.email "sammy@nocono.net"
