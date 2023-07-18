@@ -3,6 +3,7 @@ spring:
     init:
       data-locations:
         # 画面での動作確認用のデータを使わないようにするためブランクで上書き
+      mode: always
 
 logging:
   level:
