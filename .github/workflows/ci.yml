@@ -24,15 +24,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: gradle
-      - name: Test PostgreSQL
-        run: ./gradlew test --no-daemon
-        env:
-          SPRING_DATASOURCE_URL: jdbc:postgresql:postgres
-          SPRING_DATASOURCE_USERNAME: postgres
-          SPRING_DATASOURCE_PASSWORD: secret
       - uses: browser-actions/setup-chrome@latest
       - run: chrome --version
-      - run: ./gradlew test --tests "library.e2e.*" --no-daemon
+      - name: Test PostgreSQL
+        run: ./gradlew test --no-daemon
         env:
           SPRING_DATASOURCE_URL: jdbc:postgresql:postgres
           SPRING_DATASOURCE_USERNAME: postgres
